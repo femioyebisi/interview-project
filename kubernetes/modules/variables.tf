@@ -1,9 +1,9 @@
 variable "tag" {
-  type = string
+  type        = string
   description = "ECR image tag"
 }
 
 variable "image_name" {
-  type = string
+  type        = string
   description = "ECR image name"
 }

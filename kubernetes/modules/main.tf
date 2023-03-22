@@ -1,6 +1,6 @@
 resource "kubernetes_secret" "image_pull_secret" {
   metadata {
-    name = "image-pull-secret"
+    name      = "image-pull-secret"
     namespace = local.deployment_namespace
   }
 
@@ -13,10 +13,10 @@ resource "kubernetes_secret" "image_pull_secret" {
 
 resource "kubernetes_deployment" "deployment" {
   metadata {
-    name = local.deployment_name
+    name      = local.deployment_name
     namespace = local.deployment_namespace
     labels = {
-        app = local.label_app
+      app = local.label_app
     }
   }
 

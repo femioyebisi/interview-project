@@ -7,7 +7,7 @@ resource "null_resource" "k8s_patcher" {
     token    = data.aws_eks_cluster_auth.eks.token
   }
 
-provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOH
 cat >/tmp/ca.crt <<EOF
 ${base64decode(aws_eks_cluster.eks_cluster.certificate_authority[0].data)}
@@ -19,6 +19,8 @@ kubectl \
   patch deployment coredns \
   -n kube-system --type json \
   -p='[{"op": "remove", "path": "/spec/template/metadata/annotations/eks.amazonaws.com~1compute-type"}]'
+aws eks update-kubeconfig --name ${var.project_name}-cluster
+kubectl rollout restart -n kube-system deployment coredns
 EOH
   }
 

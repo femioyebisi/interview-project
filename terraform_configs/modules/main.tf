@@ -24,16 +24,16 @@ resource "aws_eip" "nat_eip" {
   }
 }
 
-resource "aws_nat_gateway" "nat"{
+resource "aws_nat_gateway" "nat" {
 
-  allocation_id =  aws_eip.nat_eip.id
-  subnet_id = element([for subnet_id in aws_subnet.public_subnets : subnet_id.id], 0)
+  allocation_id = aws_eip.nat_eip.id
+  subnet_id     = element([for subnet_id in aws_subnet.public_subnets : subnet_id.id], 0)
 
   tags = {
     Name = "${var.project_name}.nat-gw"
   }
   depends_on = [
-     aws_internet_gateway.internet_gateway
+    aws_internet_gateway.internet_gateway
   ]
 }
 

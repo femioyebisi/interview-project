@@ -21,6 +21,6 @@ variable "project_name" {
 
 variable "namespace" {
   description = "EKS Fargate namespace"
-  type = string
-  default = "deployment"
+  type        = string
+  default     = "kube-system"
 }

@@ -18,6 +18,6 @@ provider "kubernetes" {
 
 module "k8s-configs" {
   source     = "../modules"
-  tag        = "1.0.0"
+  tag        = "latest"
   image_name = "${data.aws_caller_identity.current.id}.dkr.ecr.us-east-1.amazonaws.com/hello-world-go-app"
 }

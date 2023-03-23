@@ -47,9 +47,11 @@ resource "kubernetes_deployment" "deployment" {
         image_pull_secrets {
           name = kubernetes_secret.image_pull_secret.metadata[0].name
         }
+        restart_policy = "Always"
       }
     }
   }
+  wait_for_rollout = false
 }
 
 # resource "kubernetes_job" "k8s_job" {

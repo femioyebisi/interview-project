@@ -21,10 +21,8 @@ func main() {
     fmt.Println("Hello, World!")
 }
 ```
-## Project Architecture
 
-
-## Using Application
+## Building the Infrastructure
 
 `cd` into the `terraform-configs` folder then run
 
